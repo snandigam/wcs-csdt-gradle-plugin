@@ -1,6 +1,7 @@
 buildscript {
 	repositories {
 		mavenCentral()
+		//lib should contain csdt dependency libraries
 		flatDir {
 			dirs 'lib'
 		}
@@ -17,15 +18,15 @@ buildscript {
 apply plugin: 'wcs-csdt'
 
 csdtCmdArgs {
-	baseUri = 'http://bclldev11.lbi.co.uk/cs'
+	baseUri = 'http://localhost:8080/cs'
 	username ='fwadmin'
-	password ='B34v3rCr33k'
+	password ='xceladmin'
 	cmd='import'
-	resources ='SiteEntry:833e4770-5347-477b-81ea-a1251c2e9bd8'
+	resources ='Template:*;CSElement:*;SiteEntry:*'
 	
 	//Optional
-	fromSites='BarclaysOnline'
-	toSites='BarclaysOnline'
+	fromSites='avisports'
+	toSites='avisports'
 }
 
 task importResources(type: com.snandigam.wcs.gradle.CsdtTask) {
