@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+configurations.all {
+	transitive = false
+}
+
+repositories {
+	mavenCentral()
+	flatDir {
+		dirs 'lib'
+	}
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+dependencies {
+	compile "oracle:csdt-client:1.0.4"
+}
+
+group = 'com.snandigam'
+version = '1.0-SNAPSHOT'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('repo'))
+        }
+    }
+}
