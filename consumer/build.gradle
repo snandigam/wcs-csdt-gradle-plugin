@@ -1,0 +1,32 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		flatDir {
+			dirs 'lib'
+		}
+		maven {
+			url uri('https://github.com/snandigam/maven-repository/raw/master/snapshots')
+		}
+	}
+	
+	dependencies {
+		classpath group: 'com.snandigam', name: 'wcs-csdt-gradle-plugin', version: '1.0-SNAPSHOT'
+	}
+}
+
+apply plugin: 'wcs-csdt'
+
+csdtCmdArgs {
+	baseUri = 'http://bclldev11.lbi.co.uk/cs'
+	username ='fwadmin'
+	password ='B34v3rCr33k'
+	cmd='import'
+	resources ='SiteEntry:833e4770-5347-477b-81ea-a1251c2e9bd8'
+	
+	//Optional
+	fromSites='BarclaysOnline'
+	toSites='BarclaysOnline'
+}
+
+task importResources(type: com.snandigam.wcs.gradle.CsdtTask) {
+}

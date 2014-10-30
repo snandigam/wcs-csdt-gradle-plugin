@@ -28,7 +28,7 @@ version = '1.0-SNAPSHOT'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri('repo'))
+            repository(url: uri(System.getProperty("user.home") + "/git/maven-repository/snapshots"))
         }
     }
 }
